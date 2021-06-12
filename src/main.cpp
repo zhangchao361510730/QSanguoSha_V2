@@ -31,6 +31,7 @@ int main(int argc, char *argv[]) {
 int main(int argc, char *argv[])
 {
 #endif
+	//aaa
     if (argc > 1 && strcmp(argv[1], "-server") == 0) {
         new QCoreApplication(argc, argv);
     } else if (argc > 1 && strcmp(argv[1], "-manual") == 0) {
