@@ -8,7 +8,7 @@ class MainWindowServerList;
 namespace Ui {
     class ConnectionDialog;
 }
-
+//#include<QDialog>
 class ConnectionDialog : public QDialog
 {
     Q_OBJECT

@@ -53,7 +53,7 @@ protected:
     virtual void closeEvent(QCloseEvent *);
 
 private:
-    FitView *view;
+    FitView *view; //class FitView : public QGraphicsView
     QGraphicsScene *scene;
     Ui::MainWindow *ui;
     ConnectionDialog *connection_dialog;

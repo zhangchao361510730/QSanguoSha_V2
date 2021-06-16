@@ -28,6 +28,7 @@ public:
     FitView(QGraphicsScene *scene) : QGraphicsView(scene)
     {
         setSceneRect(Config.Rect);
+        //qDebug()<<"Size is "<<Config.Rect.width()<<" "<<Config.Rect.height();
         setRenderHints(QPainter::TextAntialiasing | QPainter::Antialiasing);
     }
 
@@ -66,7 +67,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    setWindowTitle(tr("Sanguosha") + " " + Sanguosha->getVersionNumber());
+    setWindowTitle(tr("Sanguosha") + " " + Sanguosha->getVersionNumber()); //设置窗口标题版本信息
 
     scene = NULL;
 
@@ -78,10 +79,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionConfigure, SIGNAL(triggered()), config_dialog, SLOT(show()));
     connect(config_dialog, SIGNAL(bg_changed()), this, SLOT(changeBackground()));
 
-    connect(ui->actionAbout_Qt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+    connect(ui->actionAbout_Qt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));//#define qApp (static_cast<QApplication *>(QCoreApplication::instance()))
     connect(ui->actionAcknowledgement_2, SIGNAL(triggered()), this, SLOT(on_actionAcknowledgement_triggered()));
 
-    StartScene *start_scene = new StartScene;
+    StartScene *start_scene = new StartScene;// class StartScene : public QGraphicsScene
 
     QList<QAction *> actions;
     actions << ui->actionStart_Game
@@ -99,6 +100,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     setCentralWidget(view);
     restoreFromConfig();
+
+
 
     BackLoader::preload();
     gotoScene(start_scene);
